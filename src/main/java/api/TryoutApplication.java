@@ -5,6 +5,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import api.entity.Car;
 import api.entity.User;
 import api.repo.CarRepo;
 import api.repo.UserRepo;
@@ -28,6 +29,10 @@ public class TryoutApplication implements CommandLineRunner{
 		userRepo.save(new User("a@gmail.com", "name1", null));
 		userRepo.save(new User("b@gmail.com", "name2", null));
 		userRepo.save(new User("c@gmail.com", "name3", null));
+		
+		carRepo.save(new Car("MERCEDES", userRepo.findByEmail("a@gmail.com")));
+		carRepo.save(new Car("LR", userRepo.findByEmail("a@gmail.com")));
+		carRepo.save(new Car("jaguar", userRepo.findByEmail("c@gmail.com")));
 		
 	}
 
